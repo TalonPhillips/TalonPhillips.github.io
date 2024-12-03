@@ -1,0 +1,370 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+int Naruto[3]{ 0, 0, 0 };
+int Gon[3]{ 0, 0, 0 };
+int Kirito[3]{ 0, 0, 0 };
+
+
+void addVote()
+{
+
+	int candidateSelection;
+
+	cout << "Choose a candidate to vote for" << endl;
+	cout << "1. Naruto" << endl;
+	cout << "2. Gon" << endl;
+	cout << "3. Kirito" << endl;
+	cin >> candidateSelection;
+
+	if (candidateSelection < 0 || candidateSelection > 3)
+	{
+		cout << "Invaild Input try a real candidate" << endl;
+		return;
+	}
+	else if (cin.fail())
+	{
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	}
+	else if (candidateSelection == 1)
+	{
+
+		int locationSelection;
+
+		cout << "Where do you want to vote from?" << endl;
+		cout << "1. Mars" << endl;
+		cout << "2. The Ice Cream Shop" << endl;
+		cout << "3. Spongebob's House" << endl;
+		cin >> locationSelection;
+
+		if (locationSelection > 3 && locationSelection < 0)
+		{
+			cout << "Here vote somewhere else pal" << endl;
+			return;
+		}
+		else if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+		else if (locationSelection == 1)
+		{
+			Naruto[0] += 1;
+		}
+		else if (locationSelection == 2)
+		{
+			Naruto[1] += 1;
+		}
+		else
+		{
+			Naruto[2] += 1;
+		}
+
+	}
+	else if (candidateSelection == 2)
+	{
+
+		int locationSelection;
+
+		cout << "Where do you want to vote from?" << endl;
+		cout << "1. Mars" << endl;
+		cout << "2. The ice cream shop" << endl;
+		cout << "3. spongebob's house" << endl;
+		cin >> locationSelection;
+
+		if (locationSelection > 3 && locationSelection < 0)
+		{
+			cout << "Bruh spongebob is on the list" << endl;
+			return;
+		}
+		else if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+		else if (locationSelection == 1)
+		{
+			Gon[0] += 1;
+		}
+		else if (locationSelection == 2)
+		{
+			Gon[1] += 1;
+		}
+		else
+		{
+			Gon[2] += 1;
+		}
+
+	}
+	else
+	{
+
+		int locationSelection;
+
+		cout << "Where do you want to vote from?" << endl;
+		cout << "1. Mars" << endl;
+		cout << "2. The ice cream shop" << endl;
+		cout << "3. spongebob's house" << endl;
+		cin >> locationSelection;
+
+		if (locationSelection > 3 && locationSelection < 0)
+		{
+			cout << "Maybe come back when you're ready" << endl;
+			return;
+		}
+		else if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+		else if (locationSelection == 1)
+		{
+			Kirito[0] += 1;
+		}
+		else if (locationSelection == 2)
+		{
+			Kirito[1] += 1;
+		}
+		else
+		{
+			Kirito[2] += 1;
+		}
+	}
+}
+
+void viewVotes()
+{
+
+
+	int userViewTotalVotes;
+
+	cout << "Select a candidate to view total votes across the board" << endl;
+	cout << "1. Naurto" << endl;
+	cout << "2. Gon" << endl;
+	cout << "3. Kirito" << endl;
+	cin >> userViewTotalVotes;
+
+	if (userViewTotalVotes < 0 || userViewTotalVotes > 3)
+	{
+		cout << "Have you not learned?" << endl;
+	}
+	else if (cin.fail())
+	{
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	}
+	else if (userViewTotalVotes == 1)
+	{
+
+		int totalVotes = 0;
+
+		for (int k = 0; k < 3; k++)
+		{
+			totalVotes = totalVotes + Naruto[k];
+		}
+		cout << "Naurto:" << " " << totalVotes << endl;
+	}
+	else if (userViewTotalVotes == 2)
+	{
+		
+		int totalVotes = 0;
+
+		for (int k = 0; k < 3; k++)
+		{
+			totalVotes = totalVotes + Gon[k];
+		}
+		cout << "Gon:" << " " << totalVotes << endl;
+	}
+	else
+	{
+		int totalVotes = 0;
+
+		for (int k = 0; k < 3; k++)
+		{
+			totalVotes = totalVotes + Kirito[k];
+		}
+		cout << "Kirito:" << " " << totalVotes << endl;
+	}
+}
+
+void viewPoles()
+{
+
+	int userViewPole;
+
+	cout << "Which loction do you want to see the total amount of votes for?" << endl;
+	cout << "1. Mars" << endl;
+	cout << "2. The Ice Cream Shop" << endl;
+	cout << "3. Spongebob's House" << endl;
+	cin >> userViewPole;
+
+	if (userViewPole < 0 || userViewPole > 3)
+	{
+		cout << "Come on man" << endl;
+		return;
+	}
+	else if (cin.fail())
+	{
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	}
+	else if (userViewPole == 1)
+	{
+		cout << "Naurto:" << " " << Naruto[0] << endl;
+		cout << "Gon:" << " " << Gon[0] << endl;
+		cout << "Kirito:" << " " << Kirito[0] << endl;
+	}
+	else if (userViewPole == 2)
+	{
+		cout << "Naurto:" << " " << Naruto[1] << endl;
+		cout << "Gon:" << " " << Gon[1] << endl;
+		cout << "Kirito:" << " " << Kirito[1] << endl;
+	}
+	else
+	{
+		cout << "Naurto:" << " " << Naruto[2] << endl;
+		cout << "Gon:" << " " << Gon[2] << endl;
+		cout << "Kirito:" << " " << Kirito[2] << endl;
+	}
+}
+
+void displayLead()
+{
+
+	int narutoTotal = 0;
+	int gonTotal = 0;
+	int kiritoTotal = 0;
+
+	for (int k = 0; k < 3; k++)
+	{
+		narutoTotal = narutoTotal + Naruto[k];
+	}
+
+	for (int k = 0; k < 3; k++)
+	{
+		gonTotal = gonTotal + Gon[k];
+	}
+
+	for (int k = 0; k < 3; k++)
+	{
+		kiritoTotal = kiritoTotal + Kirito[k];
+	}
+
+
+	int lead = narutoTotal;
+
+	if (lead < gonTotal || lead > kiritoTotal)
+	{
+		cout << "Gon leads with:" << " " << gonTotal << endl;
+	}
+	else if (lead < kiritoTotal || lead > gonTotal)
+	{
+		cout << "Kirito leads with:" << " " << kiritoTotal << endl;
+	}
+	else if (lead > gonTotal || lead > kiritoTotal)
+	{
+		cout << "Naurto leads with:" << " " << narutoTotal << endl;
+	}
+	else if (lead == gonTotal || lead == kiritoTotal)
+	{
+		cout << "It's a 3 way tie" << endl;
+	}
+	else if (lead == gonTotal)
+	{
+		cout << "Naurto and Gon are tied" << endl;
+	}
+	else if (lead == kiritoTotal)
+	{
+		cout << "Naurto and Kirito are tied" << endl;
+	}
+	else if (gonTotal == kiritoTotal)
+	{
+		cout << "Gon and Kirito are tied" << endl;
+	}
+	else
+	{
+		cout << "There is no votes yet silly" << endl;
+	}
+}
+
+int main()
+{
+
+	bool voting = true;
+
+	do
+	{
+
+		int userPoleVote;
+
+		cout << "Welcome to the voting poles please enter a selection!" << endl;
+		cout << "1. Vote" << endl;
+		cout << "2. View candidate's" << endl;
+		cout << "3. View candidate's at pole stations" << endl;
+		cout << "4. View leading candidate" << endl;
+		cout << "5. Exit voting" << endl;
+		cin >> userPoleVote;
+
+		if (userPoleVote < 0 || userPoleVote > 6)
+		{
+			cout << "Go home man" << endl;
+			return 0;
+		}
+		else if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+		else if (userPoleVote == 1)
+		{
+			addVote();
+		}
+		else if (userPoleVote == 2)
+		{
+			viewVotes();
+		}
+		else if (userPoleVote == 3)
+		{
+			viewPoles();
+		}
+		else if (userPoleVote == 4)
+		{
+			displayLead();
+		}
+		else
+		{
+			voting = false;
+
+			int narutoTotal = 0;
+			int gonTotal = 0;
+			int kiritoTotal = 0;
+
+			for (int k = 0; k < 3; k++)
+			{
+				narutoTotal = narutoTotal + Naruto[k];
+			}
+
+			for (int k = 0; k < 3; k++)
+			{
+				gonTotal = gonTotal + Gon[k];
+			}
+
+			for (int k = 0; k < 3; k++)
+			{
+				kiritoTotal = kiritoTotal + Kirito[k];
+			}
+
+			cout << "Naruto:" << " " << narutoTotal << endl;
+			cout << "Gon:" << " " << gonTotal << endl;
+			cout << "Kirito:" << " " << kiritoTotal << endl;
+
+			cout << "Thank you for you votes :)" << endl;
+			
+		}
+
+	} while (voting);
+}

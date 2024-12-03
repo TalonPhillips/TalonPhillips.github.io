@@ -1,0 +1,483 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+
+const int health = 100;
+int strength = 12;
+int speed = 10;
+int perception = 8;
+int agility = 10;
+
+
+void customizeCharacter()
+{
+
+	char playAgain;
+	bool custom = true;
+	while (custom)
+	{
+
+		string apparel[4];
+
+		bool customizing = true;
+		while (customizing)
+		{
+
+			string head;
+			cout << "Choose a head piece (Sorcerer Hood, Bandit Cap, Knight Helmet)" << endl;
+			getline(cin, head);
+			if (head == "sorcerer hood")
+			{
+				cout << "Equipped" << endl;
+				perception += 5;
+			}
+			else if (head == "bandit cap")
+			{
+				cout << "Equipped" << endl;
+				speed += 5;
+			}
+			else if (head == "knight helmet")
+			{
+				cout << "Equipped" << endl;
+				strength += 5;
+			}
+			else
+			{
+				cout << "Not a option. Are trying to look bad?" << endl;
+				continue;
+			}
+
+			string chest;
+			cout << "Choose a chest piece (Mage Robe, Light Armor, Ebon Armor)" << endl;
+			getline(cin, chest);
+			if (chest == "mage robe")
+			{
+				cout << "Equipped" << endl;
+				perception += 5;
+			}
+			else if (chest == "light armor")
+			{
+				cout << "Equipped" << endl;
+				speed += 5;
+			}
+			else if (chest == "ebon armor")
+			{
+				cout << "Equipped" << endl;
+				strength += 5;
+			}
+			else
+			{
+				cout << "Really again? Pick a chest piece" << endl;
+				continue;
+			}
+
+			string pants;
+			cout << "Choose some pants to cover those chicken legs (light Pants, Medium Pants, Heavy Pants)" << endl;
+			getline(cin, pants);
+			if (pants == "light pants")
+			{
+				cout << "Equipped" << endl;
+				agility += 5;
+			}
+			else if (pants == "medium pants")
+			{
+				cout << "Equipped" << endl;
+				speed += 5;
+			}
+			else if (pants == "heavy pants")
+			{
+				cout << "Equipped" << endl;
+				strength += 5;
+			}
+			else
+			{
+				cout << "Those pants aren't pants" << endl;
+				continue;
+			}
+
+			string shoes;
+			cout << "Choose some shoes (Sandels, Running shoes, Knight Boots)" << endl;
+			getline(cin, shoes);
+			if (shoes == "sandels")
+			{
+				cout << "Equipped" << endl;
+				agility += 5;
+			}
+			else if (shoes == "running shoes")
+			{
+				cout << "Equipped" << endl;
+				speed += 5;
+			}
+			else if (shoes == "knight boots")
+			{
+				cout << "Equipped" << endl;
+				strength += 5;
+			}
+			else
+			{
+				cout << "We don't have all day.." << endl;
+				continue;
+			}
+			
+			customizing = false;
+		}
+
+		cout << "Do you want to customize your hero again? (y/n)" << endl;
+		cin >> playAgain;
+
+		if (playAgain == 'y')
+		{
+			custom = true;
+		}
+		else custom = false;
+
+	}
+}
+
+void numberGuessingTraining()
+{
+
+	bool guessingGame = true;
+	while (guessingGame)
+	{
+		cout << "Good evening, I am professor Lemons I will be training your perception today though I'm scared for this one.." << endl;
+
+		srand(time(0));
+		int correctNumber = (rand() % 100) + 1;
+
+		int heroGuess = 0;
+		char playAgain;
+
+		do
+		{
+			cout << "Your number falls within 1 - 100 hero choose wisely" << " " << endl;
+			cin >> heroGuess;
+
+			if (heroGuess < 1 || heroGuess > 100)
+			{
+				cout << "Number not in range hero your mind is wondering.. " << endl;
+			}
+			else if (correctNumber > heroGuess)
+			{
+				cout << "Too low look higher" << endl;
+			}
+			else if (correctNumber < heroGuess)
+			{
+				cout << "Too high look lower" << endl;
+			}
+			else
+			{
+				cout << "Wow, I'm surprised. I guess Tara might be right about you after all." << endl;
+				perception += 2;
+			}
+			
+
+		} while (heroGuess != correctNumber);
+		
+		cout << "Do you want to increase your perception more? (y/n)" << endl;
+		cin >> playAgain;
+
+		if (playAgain != 'y')
+		{
+			guessingGame = false;
+		}
+
+	}
+
+}
+
+void carThrowingTraining()
+{
+
+	bool carThrowing = true;
+	srand(time(0));
+	while (carThrowing)
+	{
+		char playAgain;
+
+		cout << "Looks like you finally came to improve those fragile arms of yours! I'm Kronk!" << endl;
+		cout << "Time to throw some cars pea brain" << endl;
+
+		int target = (rand() % 5) + 1;
+		int launch;
+
+		cout << "hit the target enter the number" << " " << target << endl;
+		cin >> launch;
+
+		if (target == launch)
+		{
+			cout << "BULLSEYE!!" << endl;
+			strength += 5;
+		}
+		else
+		{
+			cout << "Not quite string bean! HAHA" << endl;
+		}
+
+		cout << "Want to Throw another car? (y/n)" << endl;
+		cin >> playAgain;
+
+		if (playAgain != 'y')
+		{
+			carThrowing = false;
+		}
+
+	}
+	
+}
+
+void fightingTraining()
+{
+
+	bool fighting = true;
+	while (fighting)
+	{
+
+		srand(time(0));
+		string userMoveSet;
+		string opponentMoveSet;
+		char playAgain;
+
+		int playerLives = 3;
+		while (playerLives > 0)
+		{
+
+			string moveList[3] = { "fire punch", "ice shield", "leaf blade" };
+
+
+			int randomIndex = rand() % 3;
+			opponentMoveSet = moveList[randomIndex];
+
+			cout << "Hi there! I'm Tara your combat instructor!" << endl;
+			cout << "Hope you're ready to fight!" << endl;
+			cout << "Enter your attack or defense! (fire punch, ice shield, leaf blade);" << endl;
+			getline(cin, userMoveSet);
+
+			if (userMoveSet == opponentMoveSet)
+			{
+				cout << "It's a draw" << endl;
+			}
+			else if ((userMoveSet == "fire punch" && opponentMoveSet == "leaf blade") ||
+				(userMoveSet == "ice shield" && opponentMoveSet == "fire punch") ||
+				(userMoveSet == "leaf blade" && opponentMoveSet == "ice shield"))
+				 {
+					 cout << "CRITICAL HIT!" << endl;
+					 strength += 5;
+					 speed += 2;
+				 }
+			else if ((userMoveSet == "leaf blade" && opponentMoveSet == "fire punch") ||
+				(userMoveSet == "fire punch" && opponentMoveSet == "ice shield") ||
+				(userMoveSet == "ice shield" && opponentMoveSet == "leaf blade"))
+				 {
+					 cout << "oop he got you! HA Keep going!" << endl;
+					 playerLives -= 1;
+				 }
+			else
+			{
+				cout << "That is not a valid move.. maybe you are weak" << endl;
+				continue;
+			}
+		}
+
+		cout << "Good fighting! Try again when you're ready" << endl;
+
+		cout << "Do you want to play again? (y/n)" << endl;
+		cin >> playAgain;
+
+		if (playAgain != 'y')
+		{
+			fighting = false;
+		}
+	}
+
+}
+
+void bombDefuseTraining()
+{
+
+	srand(time(0));
+	bool bombDefuse = true;
+	while (bombDefuse)
+	{
+
+		string userWireCut;
+		const string wire[] = {"red", "green", "black"};
+
+		int randomIndex = rand() % 3;
+		string randomWire = wire[randomIndex];
+
+
+		char playAgain;
+
+		
+		cout << "Good you're here.. my.. who are you?" << endl;
+		cout << "Never mind that help me defuse this bomb HURRY!" << endl;
+
+		if (randomWire == wire[0])
+		{
+			cout << "All the wires are really (rusted)" << endl;
+		}
+		else if (randomWire == wire[1])
+		{
+			cout << "Maybe I should start from the (ground) up" << endl;
+		}
+		else
+		{
+			cout << "The box is an (onyx) color.. hm interesting" << endl;
+		}
+
+		cout << "Cut a wire (Red, Green, Black)" << endl;
+		cin >> userWireCut;
+		
+
+		if (userWireCut != randomWire)
+		{
+			cout << "BOOM!!" << endl;
+		}
+		else
+		{
+			cout << "phewww that was close friend thanks for your help!" << endl;
+			speed += 2;
+		}
+
+		cout << "Want to try again? (y/n)" << endl;
+		cin >> playAgain;
+		cin.clear();
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		if (playAgain != 'y')
+		{
+			bombDefuse = false;
+		}
+	}
+}
+
+void agilityTraining()
+{
+
+	bool agilityGame = true;
+	srand(time(0));
+	while (agilityGame)
+	{
+
+		string action;
+		int obstacle = rand() % 3;
+		char playAgain;
+
+		cout << "Welcome solider I'm Kade, the best scout you've ever seen!! HA." << endl;
+		cout << "Today is an obstacle course I designed for better body control" << endl;
+
+		switch (obstacle)
+		{
+		case 0:
+			cout << "An obstacle is coming JUMP!" << endl;
+			break;
+		case 1:
+			cout << "An obstacle is coming DODGE!" << endl;
+			break;
+		case 2:
+			cout << "An obstacle is coming SLIDE!" << endl;
+			break;
+		}
+
+		cout << "Enter your action:" << " " << endl;
+		cin >> action;
+
+		if ((obstacle == 0 && action == "jump") ||
+			(obstacle == 1 && action == "dodge") ||
+			(obstacle == 2 && action == "slide"))
+		{
+			cout << "Good job recruit!!!" << endl;
+			agility += 3;
+		}
+		else
+		{
+			cout << "Good try solider get back in line and try again!" << endl;
+		}
+
+		cout << "Do you want to increase your agility further or stay behind? (y/n)" << endl;
+		cin >> playAgain;
+
+		if (playAgain != 'y')
+		{
+			agilityGame = false;
+		}
+
+	}
+}
+
+
+
+int main()
+{
+
+
+	bool superHeroTraining = true;
+
+	while (superHeroTraining)
+	{
+
+		int trainingNumber;
+
+		cout << "Welcome to the super cool super hero training camp where YOU can be come a hero!!" << endl;
+		cout << "Choose a training sequence to begin:" << endl;
+		cout << "1. Customize Hero" << endl;
+		cout << "2. Perception training" << endl;
+		cout << "3. Strength Training" << endl;
+		cout << "4. Fighting training" << endl;
+		cout << "5. Speed Training" << endl;
+		cout << "6. Agility Training" << endl;
+		cout << "7. Show current stats" << endl;
+		cout << "8. Quit Hero Training" << endl;
+		cin >> trainingNumber;
+
+		if (trainingNumber == 1)
+		{
+			customizeCharacter();
+		}
+		else if (trainingNumber == 2)
+		{
+			numberGuessingTraining();
+		}
+		else if (trainingNumber == 3)
+		{
+			carThrowingTraining();
+		}
+		else if (trainingNumber == 4)
+		{
+			fightingTraining();
+		}
+		else if (trainingNumber == 5)
+		{
+			bombDefuseTraining();
+		}
+		else if (trainingNumber == 6)
+		{
+			agilityTraining();
+		}
+		else if (trainingNumber == 7)
+		{
+			'/n';
+			cout << "Health:" << " " << health << endl;
+			cout << "Strength:" << " " << strength << endl;
+			cout << "Speed:" << " " << speed << endl;
+			cout << "Perception:" << " " << perception << endl;
+			cout << "Agility:" << " " << agility << endl;
+		}
+		else if (trainingNumber == 8)
+		{
+			superHeroTraining = false;
+			cout << "Goodbye hero :)" << endl;
+		}
+		else
+		{
+			cout << "Invalid Input try again!" << endl;
+		}
+	}
+}
